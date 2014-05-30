@@ -1,3 +1,7 @@
+::-webkit-scrollbar{width:17px;background:rgba(111,111,111,0.6) url('../res/holo.png');}
+::-webkit-scrollbar-thumb{background:rgba(0, 255, 255, 0.73) url('../res/holo.png');}
+::selection{background:cyan;color:#000;text-shadow:none;}
+
 @font-face {
     font-family: 'droid_sansregular';
     src: url('DroidSans-webfont.eot');
@@ -42,38 +46,48 @@ span.bg {
 	/*-webkit-filter: blur(5px);*/
 }
 
-input{
+input, textarea{
 	background: rgba(0, 80, 87, 0.46);
 	color: cyan;
 	border: 1px solid rgba(0, 235, 255, 0.3);
 	padding: 13px 33px 13px 13px;
 }
+	input[type=submit]{
+		cursor: pointer;
+		text-transform: capitalize;
+		font-weight: bold;
+		padding: 13px 33px;
+	}
+	.create-entry-submit{
+		margin: 3px 0;
+	}
 
 div.screen {
-	/* position: absolute; */
-	/* top: 121px; */
-	/* bottom: 22px; */
-	/* right: 22px; */
-	/* left: 150px; */
-	overflow: hidden;
-	/* outline: solid 1px #00e7ff; */
+	/* position: absolute;
+	bottom: 22px;
+	left: 150px; 
+	outline: solid 1px #00e7ff; 
+	margin: -23px 0 0 44px;
 	float: right;
-	height: 80%;
-	width: 85%;
+	*/
+	top: -58px;
+	right: -43px;
+	overflow: hidden;
+	height: 85%;
+	width: 84%;
 	position: relative;
-	margin: 14px 13px 0 0;
 }
 
 div.screen-glow {
 	position: absolute;
 	pointer-events: none;
-	top: 120px;
+	top: 84px;
 	bottom: 20px;
 	right: 20px;
 	left: 20px;
 	/*outline: solid 1px #00e7ff;*/
 	box-shadow: inset 0 0 50px #00e7ff;
-	z-index: 9997;
+	z-index: 19997;
 }
 
 div.screen-background {
@@ -87,29 +101,49 @@ div.screen-background {
 	background: url("../res/holo.png");
 	z-index: 0;
 }
+.screen-holo{
+	position: absolute;
+	pointer-events: none;
+	top: 120px;
+	bottom: 20px;
+	right: 20px;
+	left: 20px;
+	width: 100%;
+	height: 100%;
+	/*outline: solid 1px #00e7ff;*/
+	z-index: -1;
+	opacity: 0.1;
+}
 
 div.entry-wrapper {
-	position: absolute;
 	border: solid 1px #00e7ff;
+	display: none;
 	opacity: 10%;
-	width: 129px;
-	height: 20px;
+	width: 166px;
+	height: 21px;
+	position: relative;
+	z-index: 15001;
 	left: -130px;
 	right: 90px;
-	overflow: hidden;
+	cursor: pointer;
+	transition: 0.333s;
 	background-color: rgba(0, 231, 255, .2);
 	border-radius: 5px;
-	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: hidden !important;
 }
 
 div.entry-title {
 	display: block;
 	/*background-color: #1e2f41;*/
-	background-color: rgba(0, 231, 255, .2);
-	color: white;
+	background-color: rgba(0, 231, 255, 0.1);
+	color: cyan;
+	z-index: 15001;
 	position: relative;
 	text-align: center;
 	height: 20px;
+	transition: 0.333s;
+	font-size: 15px;
 	/*border-top-right-radius: 5px;*/
 	/*border-top-left-radius: 5px;*/
 }
@@ -118,9 +152,11 @@ div.entry-content {
 	position: absolute;
 	/*height: auto;*/
 	width: auto;
+	/*
 	left: 5px;
 	right: 0px;
 	padding-right: 12px;
+	*/
 }
 
 div.myscroll {
@@ -142,7 +178,7 @@ div.bottom-left-corner {
     border-top: solid transparent 10px;
     border-left: solid black 10px;
     border-right: solid transparent 10px;
-    z-index: 9999;
+    z-index: 19999;
 }
 
 div.bottom-right-corner {
@@ -155,12 +191,12 @@ div.bottom-right-corner {
     border-top: solid transparent 10px;
     border-left: solid transparent 10px;
     border-right: solid black 10px;
-    z-index: 9999;
+    z-index: 19999;
 }
 
 div.top-left-corner {
 	position: absolute;
-	top: 100px;
+	top: 59px;
 	left: 0;
     width: 0;
     height: 0;
@@ -168,27 +204,34 @@ div.top-left-corner {
     border-top: solid black 10px;
     border-left: solid black 10px;
     border-right: solid transparent 10px;
-    z-index: 9999;
+    z-index: 19999;
 }
 
 div.left-side {
 	background: url("../res/aluminum.jpg");
 	position: absolute;
 	left: 0;
-	top: 100px;
+	top: 64px;
     width: 0;
-    height: 100%;
+    height: 90%;
     border-left: solid transparent 20px;
-    z-index: 9998;
+    z-index: 19965;
 }
 div.right-side {
 	background: url("../res/aluminum.jpg");
 	position: absolute;
 	right: 0;
     width: 0;
-    height: 100%;
+    height: 98%;
     border-right: solid transparent 20px;
-    z-index: 9998;
+    z-index: 19998;
+}
+
+.sidebar{
+	position: relative;
+	top: 20px;
+	width: 100%;
+	left: 143px;
 }
 
 div.bottom {
@@ -199,18 +242,18 @@ div.bottom {
     width: 100%;
     height: 0;
     border-bottom: solid transparent 20px;
-    z-index: 9998;
+    z-index: 19998;
 }
 
 div.top-left-bar {
 	background: url("../res/aluminum.jpg");
 	position: absolute;
-	top: 100px;
+	top: 64px;
 	left: 20px;
-    width: 100%;
+    width: 98%;
     height: 0;
     border-top: solid transparent 20px;
-    z-index: 9999;
+    z-index: 19997;
 }
 
 div.top-left-inner-corner {
@@ -223,10 +266,11 @@ div.top-left-inner-corner {
     border-top: solid transparent 10px;
     border-left: solid transparent 10px;
     border-right: solid black 10px;
-    z-index: 9999;	
+    z-index: 19999;	
 }
 
 div.top-bar {
+	display: none;
 	background: url("../res/aluminum.jpg");
 	position: absolute;
 	top: 0;
@@ -235,7 +279,7 @@ div.top-bar {
     width: 100%;
     height: 0;
     border-top: solid transparent 20px;
-    z-index: 9999;	
+    z-index: 19999;	
 }
 
 div.top-right-corner {
@@ -248,7 +292,7 @@ div.top-right-corner {
     border-top: solid black 10px;
     border-left: solid transparent 10px;
     border-right: solid black 10px;
-    z-index: 9999;	
+    z-index: 19999;	
 }
 
 div.top-left-block {
@@ -265,10 +309,10 @@ div.top-left-block {
 }
 
 div.top-fill-block{
-	float: left;
 	width: 100%;
-	height: 100px;
-	z-index: 5000;
+	height: 67px;
+	/* z-index: 5000; */
+	margin: -8px 0 0 0;
 	background: url("../res/aluminum.jpg");
 }
 
@@ -295,23 +339,67 @@ a.myslider {
 .mobiglas{
 	font-family: 'Play', sans-serif;
 	text-shadow: 3px 3px 3px rgba(0, 231, 255, 1);
-	color: rgba(0, 173, 255, 0.09);
-	margin: 8px 13px;
-	float: left;
+	color: rgba(0, 231, 255, 0.05);
+	margin: 11px 14px;
+	position: absolute;
+	z-index: -1;
+	bottom: 24px;
+	left: 15px;
 }
+	.glas-version{
+		position: absolute;
+		z-index: -1;
+		bottom: 21px;
+		left: 35px;
+	}
+
+.battery{
+	background:#000 url("../res/holo.png");
+	box-shadow: inset 0 0 50px #00e7ff;
+	position: relative;
+	z-index: 111111;
+	display: block;
+	float: right;
+	/* margin: -333px; */
+	right: 63px;
+	top: -53px;
+	height: 54px;
+	width: 320px;
+	overflow: hidden;
+	padding: 3px 12px 1px;
+	-webkit-transform: skew(-45deg);
+	-moz-transform: skew(-45deg);
+	-o-transform: skew(-45deg);
+}
+	.battery-bar{
+		width: 23px;
+		display: block;
+		background: rgba(0, 255, 255, 0.1) url("../res/holo.png");
+		border: 1px solid rgba(0, 255, 255, 0.84);
+		box-shadow: inset 0 0 50px rgba(0, 231, 255, 0.39);
+		height: 82%;
+		margin: 4px 3px 0;
+		float: left;
+		border-radius: 2px;
+	}
+	.low-o{
+		opacity: 0.3;
+	}
 
 .topbar-wrapper {
 	position: absolute;
-	z-index: 5000;
+	z-index: 115000;
 	margin: 0;
 	background: rgba(255, 255, 255, 0.18);
-	width: 519px;
-	right: 59px;
-	padding: 0 13px;
+	width: 582px;
+	left: 228px;
+	top: 8px;
+	padding: 3px 13px;
 	border: 1px solid rgba(190, 190, 190, 0.91);
 	-webkit-transform: skew(-45deg);
 	-moz-transform: skew(-45deg);
 	-o-transform: skew(-45deg);
+	box-shadow: inset 0 0 5px rgba(153, 153, 153, 1);
 }
 
 .topbar-option-wrapper {
@@ -324,31 +412,48 @@ a.myslider {
 	position: relative;
 	list-style: none;
 	display: inline-block;
+	margin: 0 6px;
+	box-shadow: inset 0 0 50px rgba(153, 153, 153, 0.7);
 }
 
 .topbar-option {
-	transition: 0.333s;
+	transition: 0.777s;
 	text-align: center;
-	height: 77px;
+	height: 49px;
+	width: 177px;
 	line-height: 50px;
 	/* background: rgba(51, 51, 51, 0.46); */
 	color: rgba(0, 0, 0, 0.498039);
 	font: bold 18px/1 arial, sans-serif;
-	padding: 44px;
+	padding: 0px;
 	/*
 	border-radius: 25px;
 	background-color: rgba(255, 255, 255, .2);  
 	box-shadow: rgba(0, 0, 0, 0.8) 1px 1px 13px; */
 }
-	.topbar-option:hover{
-		color: rgba(0, 255, 255, 0.9); 
-		text-shadow: 0 -1px 0 #777;
-	}
 	.topbar-option-inner{
-		-webkit-transform: skew(0deg) !important;
+		-webkit-transform: skew(28deg) !important;
 		-moz-transform: skew(0deg) !important;
 		-o-transform: skew(0deg) !important;
+		transform: skew(0deg) !important;
+		position: absolute;
+		color: #333;
+		text-transform: capitalize;
+		cursor: pointer;
+		font-weight: bold;
 	}
+		.topbar-option-inner:hover{
+			color: cyan !important;
+		}
+		#mylog .topbar-option-inner{
+			margin: 16px auto 0 56px;
+		}
+		#browselogs .topbar-option-inner{
+			margin: 16px auto 0 36px;
+		}
+		#login-li .topbar-option-inner{
+			margin: 16px auto 0 56px;
+		}
 
 button.punch {
   background: #4162a8;
@@ -378,9 +483,11 @@ button.punch {
 
 button.minimal {
   background: rgba(99, 99, 99, 0.2);
-  border: 1px solid #3B3D46;
+  border: 3px solid rgba(142, 143, 148, 0.83);
   -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
-  box-shadow: inset 0 0 1px 1px #f6f6f6;
+  box-shadow: 1px 1px 1px rgba(101, 103, 105, 0.7);
+  border-left: 1px solid #FFF;
+  border-top: 1px solid #fff;
   /* color: #333; 
   text-shadow: 0 1px 0 #fff; 
   font: bold 12px/1 "helvetica neue", helvetica, arial, sans-serif;
@@ -388,25 +495,33 @@ button.minimal {
   text-align: center;
   width: 150px; */ }
   button.minimal:hover {
-	border: 1px solid rgb(0, 184, 255);
 	 background: #05353A url("../res/holo.png");
     -webkit-box-shadow: inset 0 0 1px 1px #eaeaea;
     box-shadow: inset 0 0 1px 1px #eaeaea;
+	border: 3px solid rgba(142, 143, 148, 0);
+	-webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+	box-shadow: 1px 1px 1px rgba(101, 103, 105, 0.7);
+	border-left: 1px solid #fff;
+	border-top: 1px solid #fff;
     cursor: pointer; }
   button.minimal:active {
 	background: rgba(99, 99, 99, 0.88);
     -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
     box-shadow: inset 0 0 1px 1px #e3e3e3;
-  	border: 0;}
+  	border: 0;
+  	border: 3px solid rgba(142, 143, 148, 0);
+	border-left: 1px solid #fff;
+	border-top: 1px solid #fff;}
 
 div.account-entry-wrapper {
-	position: absolute;
-	top: -25px;
+	position: relative;
+	top: -38px;
+	bottom: 0px;
 	left: 500px;
 }
 
 div.login-container {
-	position: absolute;
+	position: relative;
 	top: 10px;
 	left: 10px;
 }
@@ -419,6 +534,7 @@ table.markdown {
 td.markdown {
 	width: 50%;
 	vertical-align: top;
+	padding: 3px 3px 3px 13px;
 }
 
 textarea.markdown {
@@ -433,9 +549,24 @@ span.markdown {
 	width: 100%;
 }
 
-.entry-wrapper#create-entry {
-	top: 0px;
-	visibility: hidden;
+.create-entry-active{
+	top: -59px !important;
+	display: block;
+	height: 85% !important;
+}
+	.entry-wrapper#create-entry {
+		top: 0px;
+		display:none;
+	}
+
+#play-icon{
+	display: none;
+	width: 33px;
+	height: 33px;
+	z-index: 9999;
+	fill: cyan;
+	cursor: pointer;
+	position: absolute;
 }
 
 div.page-title {
@@ -449,9 +580,7 @@ div.page-title {
 }
 
 div.browse-logs-entry-wrapper {
-	position: absolute;
-	position: absolute;
-	top: -25px;
+	top: -38px;
 	left: 200px;
 }
 
@@ -480,18 +609,75 @@ div.browse-logs-option-username {
 	font-size: 12px;
 }
 
+.log-entries{
+	margin: 0 0 -45px 0;
+}
+	.log-entries-active{
+		position: relative;
+		width: 84%;
+		right: -43px;
+		top: -58px;
+		height: 85%;
+	}
+
+div.footer{
+	position: absolute;
+	bottom: 3px;
+	/* left: 0; */
+	right: 0;
+	margin-left: auto;
+	/* margin-right: auto; */
+	width: 89px;
+	font-size: 9px;
+	color: rgba(0, 0, 0, 0.64);
+	z-index: 110000;
+	float: right;
+}
+
 span.error {
 	color: red;
 }
 
 a.edit {
-	position: absolute;
-	visibility: hidden;
+	position: relative;
+	display: none;
 	opacity: 0;
 	right: 5px;
+	color: cyan;
+	background: rgba(0, 9, 10, 0.72);
+	padding: 0 5px;
+	width: 50px;
+	float: right;
+	margin: 0 -7px 0 0;
+	border: 1px solid cyan;
+	border-bottom: 0;
+	border-top: 0;
+	height: 21px;
+}
+
+.entry-title-active{
+	background: rgba(0, 0, 0, 0.61);
+	padding: 1px 33px;
+	border: 1px solid cyan;
+	border-bottom: 0;
+	border-top: 0;
+}
+
+.entry.entry-content.selected p{
+	padding: 3px 111px;
+	line-height: 1.5em;
 }
 
 img {
 	border-radius: 5px;
 	border: solid 1px rgba(0, 231, 255, .2);
+}
+
+@media screen and (min-width: 1824px){
+	div.left-side{height: 94%;}
+	div.screen{
+		margin: -23px 0 0 51px;
+		width: 89%;
+		height: 93%;
+	}
 }

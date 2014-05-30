@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../scripts/speakClient.js"></script>
 	<script type="text/javascript" src="../scripts/scripts.js"></script>
 	<script type="text/javascript" src="../scripts/markdown.min.js"></script>
 	<script type="text/javascript" src="../scripts/jquery.animate-shadow-min.js"></script>
@@ -46,33 +47,88 @@
 </div>
 
 <!-- screen decoration -->
+<!-- <img class="screen-holo" src="https://googledrive.com/host/0B9LVk4xbDIJTODlBUkFIUlh5SGc/holo.gif" alt="hologram"/> -->
 <div class="screen-glow"></div>
 <div class="screen-background"></div>
 
 <!-- topbar -->
-<h1 class="mobiglas"><a href="/">MobiGlas</a></h1>
-<ul class="topbar-wrapper">
+<h1 class="mobiglas">MobiGlas</h1>
+<sup class="glas-version">version CL 0.0.1</sup>
+
+	<span class="battery">
+		<span class="battery-bar"> </span>
+		<span class="battery-bar"> </span>
+		<span class="battery-bar"> </span>
+		<span class="battery-bar"> </span>
+		<span class="battery-bar"> </span>
+		<span class="battery-bar"> </span>
+		
+		<span class="battery-bar low-o"> </span>
+		<span class="battery-bar low-o"> </span>
+		<span class="battery-bar low-o"> </span>
+		<span class="battery-bar low-o"> </span>
+	</span>
+
+	<ul class="topbar-wrapper">
 	<li id="mylog" class="topbar-option-wrapper">
+		<span class="topbar-option-inner">MY LOG</span>
 		<button class="topbar-option minimal" id="my-log">
-			<span class="topbar-option-inner">My Log</span>
 		</button>
 	</li>
 	<a class="internal" href="#browse-logs">
-		<li class="topbar-option-wrapper">
+		<li id="browselogs" class="topbar-option-wrapper">
+			<span class="topbar-option-inner">BROWSE LOGS</span>
 			<button class="topbar-option minimal" id="browse-logs">
-				<span class="topbar-option-inner">Browse Logs</span>
 			</button>
 		</li>
 	</a>
 	<a class="internal" href="#login">
-		<li class="topbar-option-wrapper">
+		<li id="login-li" class="topbar-option-wrapper">
+			<span class="topbar-option-inner">LOGIN</span>
 			<button class="topbar-option minimal" id="login">
-				<span class="topbar-option-inner">Login</span>
 			</button>
 		</li>
 	</a>
 </ul>
 
+	<!-- Sidebar - Create Entry -->
+	<div class="sidebar">
+		<!-- scrollwheel capture element -->
+		<!-- <div class="scrollwheel"></div> -->
+		<div class="entry entry-wrapper" id="create-entry">
+			<div id="create-entry" name="createentry" class="entry entry-title">
+				Create Entry
+			</div>
+			<div class="entry entry-content">
+				<div id="audio"></div>
+				<table class="markdown">
+					<tr>
+						<td class="markdown">
+							<form method="POST">
+								<input name="form-type" type="hidden" value="entry"><br>
+								This editor uses <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown</a>.  Click for details about formatting with Markdown.
+								<textarea class="markdown" id="markdown" name="markdown" rows="10" required="required"></textarea>
+								<input class="create-entry-submit" type="submit" value="SUBMIT"/>
+							</form>
+						</td>
+						<td class="markdown">
+							<span class="markdown" id="markdown-converted"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div> <!-- Sidebar - Create Entry end -->
+		
+<!-- Log entries -->
+<div class="log-entries"> </div>
+<!-- play button -->
+<svg id="play-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"> <path
+id="video-play-3-icon" d="M256,92.481c44.433,0,86.18,17.068,117.553,48.064C404.794,171.411,422,212.413,422,255.999
+s-17.206,84.588-48.448,115.455c-31.372,30.994-73.12,48.064-117.552,48.064s-86.179-17.07-117.552-48.064
+C107.206,340.587,90,299.585,90,255.999s17.206-84.588,48.448-115.453C169.821,109.55,211.568,92.481,256,92.481 M256,52.481
+c-113.771,0-206,91.117-206,203.518c0,112.398,92.229,203.52,206,203.52c113.772,0,206-91.121,206-203.52
+C462,143.599,369.772,52.481,256,52.481L256,52.481z M206.544,357.161V159.833l160.919,98.666L206.544,357.161z"/> </svg>
 
 <!-- screen -->
 <div class="screen">
@@ -134,39 +190,21 @@
 	<!-- Page title -->
 	<div class="page-title"></div>
 
-	<!-- Create entry -->
-	<div class="sidebar">
-		<!-- scrollwheel capture element -->
-		<!-- <div class="scrollwheel"></div> -->
-		<div class="entry entry-wrapper" id="create-entry">
-			<div id="create-entry" name="createentry" class="entry entry-title">
-				Create Entry
-			</div>
-			<div class="entry entry-content">
-				<table class="markdown">
-					<tr>
-						<td class="markdown">
-							<form method="POST">
-								<input name="form-type" type="hidden" value="entry"><br>
-								This editor uses <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown</a>.  Click for details about formatting with Markdown.
-								<textarea class="markdown" id="markdown" name="markdown" rows="10" required="required"></textarea>
-								<input type="submit"/>
-							</form>
-						</td>
-						<td class="markdown">
-							<span class="markdown" id="markdown-converted"></span>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-
-		<!-- Log entries -->
-		<div class="log-entries">
-		</div>
 	</div>
-</div>
-
+</div> <!-- screen end -->
+	
+<div class="footer">MobiLog v1.1</div>
+	
+<!-- sound fx -->
+<audio id="menuClickSound">
+	<source src="../res/audio/multimedia_pop_up_alert_tone_1.mp3"> </source>
+</audio>
+<audio id="menuHoverSound">
+	<source src="../res/audio/tranzistor_nav.mp3"> </source>
+</audio>
+<audio id="screenShiftSound">
+	<source src="../res/audio/subtle_tech_interface.mp3"> </source>
+</audio> <!-- sound fx end -->
 
 
 </body>
